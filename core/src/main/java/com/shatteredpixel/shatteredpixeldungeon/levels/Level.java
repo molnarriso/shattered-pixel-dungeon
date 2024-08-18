@@ -195,6 +195,8 @@ public abstract class Level implements Bundlable {
 	private static final String BLOBS		= "blobs";
 	private static final String FEELING		= "feeling";
 
+	public Item sacrificialFireItem = null;
+
 	public void create() {
 
 		Random.pushGenerator( Dungeon.seedCurDepth() );

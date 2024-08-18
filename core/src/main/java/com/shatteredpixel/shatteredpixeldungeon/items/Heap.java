@@ -68,7 +68,12 @@ public class Heap implements Bundlable {
 		CRYSTAL_CHEST,
 		TOMB,
 		SKELETON,
-		REMAINS
+		REMAINS,
+		MIMIC,
+		GOLDEN_MIMIC,
+		CRYSTAL_MIMIC,
+		STATUE,
+		TrinketCatalyst
 	}
 	public Type type = Type.HEAP;
 	
@@ -382,8 +387,18 @@ public class Heap implements Bundlable {
 				return Messages.get(this, "skeleton");
 			case REMAINS:
 				return Messages.get(this, "remains");
+			case MIMIC:
+				return "mimic";
+			case GOLDEN_MIMIC:
+				return "golden mimic";
+			case CRYSTAL_MIMIC:
+				return "crystal mimic";
+			case STATUE:
+				return "statue";
+			case TrinketCatalyst:
+				return "magical catalyst";
 			default:
-				return peek().title();
+				return peek().title().toLowerCase();
 		}
 	}
 

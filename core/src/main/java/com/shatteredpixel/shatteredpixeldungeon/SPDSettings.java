@@ -236,7 +236,7 @@ public class SPDSettings extends GameSettings {
 	}
 	
 	public static boolean intro() {
-		return getBoolean( KEY_INTRO, true );
+		return false;
 	}
 	
 	public static void lastClass( int value ) {
@@ -314,7 +314,7 @@ public class SPDSettings extends GameSettings {
 	}
 
 	public static boolean news(){
-		return getBoolean(KEY_NEWS, true);
+		return getBoolean(KEY_NEWS, false);
 	}
 
 	public static void updates(boolean value){
@@ -322,7 +322,7 @@ public class SPDSettings extends GameSettings {
 	}
 
 	public static boolean updates(){
-		return getBoolean(KEY_UPDATES, true);
+		return getBoolean(KEY_UPDATES, false);
 	}
 
 	public static void betas(boolean value){

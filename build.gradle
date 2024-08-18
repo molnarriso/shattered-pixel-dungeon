@@ -14,7 +14,7 @@ allprojects {
 
     ext {
         appName = 'Shattered Pixel Dungeon'
-        appPackageName = 'com.shatteredpixel.shatteredpixeldungeon'
+        appPackageName = 'com.elektrochecker.seedfinder'
 
         appVersionCode = 782
         appVersionName = '2.4.2'

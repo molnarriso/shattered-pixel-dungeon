@@ -63,6 +63,7 @@ public class Game implements ApplicationListener {
 	public static float density = 1;
 	
 	public static String version;
+	public static String appname;
 	public static int versionCode;
 	
 	// Current scene
