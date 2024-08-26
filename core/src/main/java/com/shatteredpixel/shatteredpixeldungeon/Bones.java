@@ -158,31 +158,7 @@ public class Bones {
 		}
 
 		if (depth == -1) {
-
-			try {
-				Bundle bundle = FileUtils.bundleFromFile(BONES_FILE);
-
-				depth = bundle.getInt( LEVEL );
-				branch = bundle.getInt( BRANCH );
-				if (depth > 0) {
-					if (bundle.contains(ITEM)) {
-						item = (Item) bundle.get(ITEM);
-					} else {
-						item = null;
-					}
-					if (bundle.contains(HERO_CLASS)){
-						heroClass = bundle.getEnum(HERO_CLASS, HeroClass.class);
-					} else {
-						heroClass = null;
-					}
-				}
-
-				return get();
-
-			} catch (IOException e) {
-				return null;
-			}
-
+			return null;
 		} else {
 			if (lootAtCurLevel()) {
 
