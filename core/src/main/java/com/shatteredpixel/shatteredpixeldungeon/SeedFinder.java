@@ -117,6 +117,9 @@ public class SeedFinder {
 
 	List<Class<? extends Item>> blacklist;
 	ArrayList<String> itemList;
+	private long startTime;
+	private long seedsTested;
+	private long lastPrintTime;
 
 	private void parseArgs(String[] args) {
 		if (args.length == 2) {
@@ -349,6 +352,10 @@ public class SeedFinder {
 			e.printStackTrace();
 		}
 
+		startTime = System.currentTimeMillis();
+		seedsTested = 0;
+		lastPrintTime = startTime;
+
 		// only generate natural seeds
 		if (Options.trueRandom) {
 			for (int i = 0; i < DungeonSeed.TOTAL_SEEDS; i++) {
@@ -378,6 +385,17 @@ public class SeedFinder {
 					logSeedItems(Long.toString(i), Options.floors);
 				}
 			}
+		}
+	}
+
+	private void printStats() {
+		long currentTime = System.currentTimeMillis();
+		if (currentTime - lastPrintTime >= 1000) {  // Print every second
+			long elapsedSeconds = (currentTime - startTime) / 1000;
+			double seedsPerSecond = (double) seedsTested / elapsedSeconds;
+			System.out.printf("\rTested %d seeds (%.2f seeds/second)", seedsTested, seedsPerSecond);
+			System.out.flush();  // Ensure the output is displayed immediately
+			lastPrintTime = currentTime;
 		}
 	}
 
@@ -581,6 +599,11 @@ public class SeedFinder {
 					Wandmaker.Quest.wand2,
 					Imp.Quest.reward
 			};
+			boolean ok = false;
+			if(Imp.Quest.spawned)
+			{
+				ok = true;
+			}
 
 			if (Ghost.Quest.armor != null) {
 				questitems[0] = Ghost.Quest.armor.inscribe(Ghost.Quest.glyph);
@@ -603,6 +626,16 @@ public class SeedFinder {
 			Dungeon.depth++;
 		}
 
+		seedsTested++;
+		// Print stats every 5 seconds
+		long currentTime = System.currentTimeMillis();
+		if (currentTime - lastPrintTime >= 5000) {
+			double seedsPerSecond = seedsTested / ((currentTime - lastPrintTime) / 1000.0);
+			System.out.printf("Tested %d seeds (%.2f seeds/second)\r\n", seedsTested, seedsPerSecond);
+			lastPrintTime = currentTime;
+			seedsTested = 0;  // Reset the counter
+		}
+
 		if (Options.condition == Condition.ANY) {
 			for (int i = 0; i < itemList.size(); i++) {
 				if (itemsFound[i] == true)
@@ -612,7 +645,7 @@ public class SeedFinder {
 			return false;
 		}
 
-		else {
+		else {	//Options.condition == Condition.ALL
 			for (int i = 0; i < itemList.size(); i++) {
 				if (itemsFound[i] == false)
 					return false;
