@@ -29,12 +29,7 @@ import com.shatteredpixel.shatteredpixeldungeon.ShatteredPixelDungeon;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IllegalFormatException;
-import java.util.Locale;
+import java.util.*;
 
 /*
 	Simple wrapper class for libGDX I18NBundles.
@@ -44,6 +39,9 @@ import java.util.Locale;
 	This means that an object can just ask for "name" rather than, say, "items.weapon.enchantments.death.name"
  */
 public class Messages {
+
+	private static final Map<String, String> cache = new HashMap<>();
+	private static final int CACHE_MAX_SIZE = 10000; // Adjust this value based on your memory constraints
 
 	private static ArrayList<I18NBundle> bundles;
 	private static Languages lang;
@@ -137,14 +135,29 @@ public class Messages {
 		}
 	}
 
-	private static String getFromBundle(String key){
+	private static String getFromBundle(String key) {
+		// Check cache first
+		String cachedResult = cache.get(key);
+		if (cachedResult != null) {
+			return cachedResult.equals("") ? null : cachedResult;
+		}
+
 		String result;
-		for (I18NBundle b : bundles){
+		for (I18NBundle b : bundles) {
 			result = b.get(key);
-			//if it isn't the return string for no key found, return it
-			if (result.length() != key.length()+6 || !result.contains(key)){
+			// If it isn't the return string for no key found, cache and return it
+			if (result.length() != key.length() + 6 || !result.contains(key)) {
+				// Add to cache if it's not full
+				if (cache.size() < CACHE_MAX_SIZE) {
+					cache.put(key, result);
+				}
 				return result;
 			}
+		}
+
+		// Cache the null result to avoid future lookups
+		if (cache.size() < CACHE_MAX_SIZE) {
+			cache.put(key, "");
 		}
 		return null;
 	}

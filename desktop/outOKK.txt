@@ -1,0 +1,328 @@
+Items for seed VYC-PQE-EYM (4578935237772):
+
+Trinkets:
+- petrified seed                   (magical catalyst)
+- mimic tooth                      (magical catalyst)
+- trap mechanism                   (magical catalyst)
+
+--- floor 1: no feeling
+
+Equipment:
+- leather armor                    (chest)
+
+Scrolls:
+- scroll of transmutation          raido
+- scroll of upgrade                gyfu
+- scroll of remove curse           yngvi
+- scroll of rage                   sowilo
+
+Potions:
+- potion of frost                  silver
+- potion of mind vision            amber
+- potion of toxic gas              golden
+- potion of mind vision            amber
+
+Other:
+- pasty
+
+--- floor 2: no feeling
+
+Equipment:
+- friendly shortsword
+- mail armor
+
+Scrolls:
+- scroll of remove curse           yngvi
+
+Potions:
+- potion of levitation             bistre (skeletal remains)
+- potion of purity                 crimson
+- potion of strength               azure
+
+Other:
+- stone of intuition
+- magical catalyst                 (chest)
+- bomb
+- ration of food
+- stone of intuition
+
+--- floor 3: traps
+
+Ghost quest rewards:
+- leather armor +1
+- dirk +1
+
+Equipment:
+- sai                              (mimic)
+
+Scrolls:
+- scroll of upgrade                gyfu
+
+Potions:
+- potion of paralytic gas          indigo (chest)
+
+Artifacts:
+- cursed alchemist's toolkit       (mimic)
+
+Other:
+- ration of food
+- stone of disarming
+- throwing club x2
+- stone of blast
+
+--- floor 4: chasms
+
+Equipment:
+- displacing spear
+
+Scrolls:
+- scroll of retribution            odal
+- scroll of upgrade                gyfu
+
+Potions:
+- potion of liquid flame           jade
+- potion of strength               azure
+
+Other:
+- ration of food
+- stone of shock
+- arcane stylus
+
+--- floor 5: goo
+
+
+--- floor 6: no feeling
+
+Equipment:
+- plate armor of bulk +2           (tomb)
+- unstable scimitar                (statue)
+
+Scrolls:
+- scroll of terror                 berkanan
+- scroll of remove curse           yngvi
+- scroll of recharging             naudiz
+- scroll of terror                 berkanan
+- scroll of upgrade                gyfu
+
+Other:
+- ration of food
+
+--- floor 7: no feeling
+
+Equipment:
+- crossbow +1                      (locked chest)
+
+Scrolls:
+- scroll of identify               tiwaz (chest)
+- scroll of upgrade                gyfu
+
+Potions:
+- potion of strength               azure
+- potion of frost                  silver
+
+Wands:
+- wand of transfusion +1           (crystal chest)
+
+Artifacts:
+- cursed sandals of nature         (crystal chest)
+
+Other:
+- chargrilled meat
+- arcane stylus
+- pasty
+- chargrilled meat
+- honeypot
+
+--- floor 8: no feeling
+
+
+Potions:
+- potion of purity                 crimson (skeletal remains)
+- potion of strength               azure
+- potion of healing                charcoal (chest)
+
+Other:
+- seed of swiftthistle
+- stone of fear
+- ration of food
+
+--- floor 9: water
+
+Wandmaker quest item: fresh embers
+
+Wandmaker quest rewards:
+- wand of magic missile +3
+- wand of living earth +2
+
+Equipment:
+- mace                             (skeletal remains)
+
+Scrolls:
+- scroll of identify               tiwaz
+- scroll of upgrade                gyfu
+- scroll of lullaby                laguz
+- scroll of identify               tiwaz
+- scroll of transmutation          raido
+
+Potions:
+- potion of invisibility           magenta (skeletal remains)
+
+Other:
+- ration of food
+
+--- floor 10: tengu
+
+
+--- floor 11: no feeling
+
+
+Scrolls:
+- scroll of mirror image           isaz
+- scroll of recharging             naudiz
+- scroll of teleportation          kaunan
+
+Potions:
+- potion of frost                  silver
+- potion of levitation             bistre
+- potion of strength               azure
+
+Wands:
+- cursed wand of corruption        (chest)
+- cursed wand of corruption
+
+Other:
+- tomahawk x2
+- ration of food
+
+--- floor 12: no feeling
+
+
+Scrolls:
+- scroll of identify               tiwaz (skeletal remains)
+- scroll of upgrade                gyfu
+
+Potions:
+- potion of healing                charcoal
+- potion of invisibility           magenta
+- potion of healing                charcoal (chest)
+
+Other:
+- ration of food                   (chest)
+
+--- floor 13: traps
+
+Equipment:
+- runic blade                      (mimic)
+- unstable katana +1               (sacrificial fire)
+
+Scrolls:
+- scroll of upgrade                gyfu
+
+Potions:
+- potion of haste                  ivory
+
+Other:
+- stone of clairvoyance
+- arcane stylus
+- seed of mageroyal
+- stone of clairvoyance
+- ration of food
+
+--- floor 14: enemies moving in the darkness
+
+Blacksmith quest: gnoll geomancer
+
+Equipment:
+- crossbow +2                      (chest)
+- battle axe                       (locked chest)
+
+Scrolls:
+- scroll of magic mapping          mannaz
+- scroll of upgrade                gyfu
+- scroll of identify               tiwaz (locked chest)
+- scroll of recharging             naudiz
+- scroll of terror                 berkanan (locked chest)
+- scroll of remove curse           yngvi
+
+Potions:
+- potion of healing                charcoal
+- potion of levitation             bistre
+- potion of toxic gas              golden
+- potion of levitation             bistre (chest)
+- potion of paralytic gas          indigo (chest)
+- potion of strength               azure
+- potion of experience             turquoise
+- potion of haste                  ivory
+
+Rings:
+- ring of wealth +2                diamond (mimic)
+
+Artifacts:
+- dried rose                       (locked chest)
+
+Other:
+- torch
+- ration of food
+- throwing spear x2
+- stone of enchantment
+- kunai x3
+
+--- floor 15: DM-300
+
+
+--- floor 16: unusually large
+
+Equipment:
+- scale armor
+- glaive +1
+- grim battle axe +1               (statue)
+
+Scrolls:
+- scroll of upgrade                gyfu
+- scroll of identify               tiwaz
+- scroll of terror                 berkanan
+
+Potions:
+- potion of purity                 crimson
+- potion of strength               azure
+
+Other:
+- ration of food
+- pasty
+- bomb
+- stone of blast
+- stone of blink
+- honeypot
+- heavy boomerang x2
+- stone of disarming
+- shattered honeypot
+
+--- floor 17: enemies moving in the darkness
+
+Imp quest reward:
+- cursed ring of wealth +4
+
+Equipment:
+- plate armor of anti-entropy +1   (tomb)
+- plate armor                      (chest)
+
+Scrolls:
+- scroll of magic mapping          mannaz
+- scroll of teleportation          kaunan
+
+Potions:
+- potion of liquid flame           jade
+- potion of liquid flame           jade
+
+Rings:
+- ring of force +2                 garnet (crystal chest)
+
+Artifacts:
+- master thieves' armband          (crystal chest)
+
+Other:
+- ration of food
+- arcane stylus
+- torch
+- honeypot
+

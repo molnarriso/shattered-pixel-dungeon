@@ -116,29 +116,33 @@ public class Patch {
 
 		//even if force fill rate is on, only do this if we have some kind of border
 		if (forceFillRate && Math.min(w, h) > 2) {
-			int[] neighbours = new int[]{-w - 1, -w, -w + 1, -1, 0, +1, +w - 1, +w, +w + 1};
-			boolean growing = fillDiff < 0;
-
-			while (fillDiff != 0) {
-				int cell;
-				int tries = 0;
-
-				//random cell, not in the map's borders
-				// try length/10 times to find a cell we can grow from, and not start a new patch/hole
-				do {
-					cell = Random.Int(1, w - 1) + Random.Int(1, h - 1) * w;
-					tries++;
-				} while (off[cell] != growing && tries * 10 < length);
-
-				for (int i : neighbours) {
-					if (fillDiff != 0 && off[cell + i] != growing) {
-						off[cell + i] = growing;
-						fillDiff += growing ? +1 : -1;
-					}
-				}
-			}
+			generateForceFill(w,h,fillDiff,off,length);
 		}
 		
 		return off;
+	}
+	
+	public static void generateForceFill( int w, int h, int fillDiff,boolean[] off ,int length ) {
+		int[] neighbours = new int[]{-w - 1, -w, -w + 1, -1, 0, +1, +w - 1, +w, +w + 1};
+		boolean growing = fillDiff < 0;
+
+		while (fillDiff != 0) {
+			int cell;
+			int tries = 0;
+
+			//random cell, not in the map's borders
+			// try length/10 times to find a cell we can grow from, and not start a new patch/hole
+			do {
+				cell = Random.Int(1, w - 1) + Random.Int(1, h - 1) * w;
+				tries++;
+			} while (off[cell] != growing && tries * 10 < length);
+
+			for (int i : neighbours) {
+				if (fillDiff != 0 && off[cell + i] != growing) {
+					off[cell + i] = growing;
+					fillDiff += growing ? +1 : -1;
+				}
+			}
+		}
 	}
 }
