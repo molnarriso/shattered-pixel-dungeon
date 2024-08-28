@@ -40,7 +40,7 @@ public class Patch {
 	 * achieved. This is tracked with the fillDiff variable.
 	*/
 	public static boolean[] generate( int w, int h, float fill, int clustering, boolean forceFillRate ) {
-		
+
 		int length = w * h;
 
 		boolean[] cur = new boolean[length];
@@ -57,61 +57,55 @@ public class Patch {
 			if (off[i]) fillDiff++;
 		}
 
-		for (int i = 0; i < clustering; i++) {
-			for (int y = 0; y < h; y++) {
-				int count = 0;
-				int neighbours = 0;
+		for (int i=0; i < clustering; i++) {
 
-				// Initialize for the first cell in the row
-				for (int dy = -1; dy <= 1; dy++) {
-					if (y + dy >= 0 && y + dy < h) {
-						if (off[(y + dy) * w]) count++;
-						neighbours++;
-						if (w > 1) {
-							if (off[(y + dy) * w + 1]) count++;
-							neighbours++;
-						}
-					}
-				}
+			for (int y=0; y < h; y++) {
+				for (int x=0; x < w; x++) {
 
-				for (int x = 0; x < w; x++) {
 					int pos = x + y * w;
+					int count = 0;
+					int neighbours = 0;
 
-					// Update cur[pos] based on current count and neighbours
-					cur[pos] = 2 * count >= neighbours;
-					if (cur[pos] != off[pos]) {
-						fillDiff += cur[pos] ? +1 : -1;
-					}
-
-					// Update count and neighbours for the next cell
-					if (x < w - 1) {
-						// Remove leftmost column
-						if (y > 0) {
-							if (off[pos - w]) count--;
-							neighbours--;
-						}
-						if (off[pos]) count--;
-						neighbours--;
-						if (y < h - 1) {
-							if (off[pos + w]) count--;
-							neighbours--;
-						}
-
-						// Add rightmost column (which is two steps to the right from current x)
-						int rightPos = pos + 2;
-						if (x < w - 2) {  // Ensure we're not going out of bounds
-							if (y > 0) {
-								if (off[rightPos - w]) count++;
-								neighbours++;
-							}
-							if (off[rightPos]) count++;
+					if (y > 0) {
+						if (x > 0){
+							if (off[pos - w - 1]) count++;
 							neighbours++;
-							if (y < h - 1) {
-								if (off[rightPos + w]) count++;
-								neighbours++;
-							}
+						}
+						if (off[pos - w]) count++;
+						neighbours++;
+						if (x < (w - 1)){
+							if (off[pos - w + 1]) count++;
+							neighbours++;
 						}
 					}
+
+					if (x > 0){
+						if (off[pos - 1]) count++;
+						neighbours++;
+					}
+					if (off[pos]) count++;
+					neighbours++;
+					if (x < (w-1)){
+						if (off[pos + 1]) count++;
+						neighbours++;
+					}
+
+					if (y < (h-1)) {
+						if (x > 0){
+							if (off[pos + w - 1]) count++;
+							neighbours++;
+						}
+						if (off[pos + w]) count++;
+						neighbours++;
+						if (x < (w-1)){
+							if (off[pos + w + 1]) count++;
+							neighbours++;
+						}
+					}
+
+					cur[pos] = 2*count >= neighbours;
+					if (cur[pos] != off[pos]) fillDiff += cur[pos] ? +1 : -1;
+
 				}
 			}
 
@@ -124,7 +118,7 @@ public class Patch {
 		if (forceFillRate && Math.min(w, h) > 2) {
 			generateForceFill(w,h,fillDiff,off,length);
 		}
-		
+
 		return off;
 	}
 	
