@@ -20,4 +20,6 @@ local.properties
 *.idea
 
 #git patch files
-*.patch
+*.patch
+desktop/out.txt
+desktop/seeditems.txt

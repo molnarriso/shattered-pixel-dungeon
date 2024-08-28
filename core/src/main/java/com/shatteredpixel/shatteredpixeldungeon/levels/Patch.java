@@ -56,59 +56,65 @@ public class Patch {
 			off[i] = Random.Float() < fill;
 			if (off[i]) fillDiff++;
 		}
-		
-		for (int i=0; i < clustering; i++) {
 
-			for (int y=0; y < h; y++) {
-				for (int x=0; x < w; x++) {
-					
+		for (int i = 0; i < clustering; i++) {
+			for (int y = 0; y < h; y++) {
+				int count = 0;
+				int neighbours = 0;
+
+				// Initialize for the first cell in the row
+				for (int dy = -1; dy <= 1; dy++) {
+					if (y + dy >= 0 && y + dy < h) {
+						if (off[(y + dy) * w]) count++;
+						neighbours++;
+						if (w > 1) {
+							if (off[(y + dy) * w + 1]) count++;
+							neighbours++;
+						}
+					}
+				}
+
+				for (int x = 0; x < w; x++) {
 					int pos = x + y * w;
-					int count = 0;
-					int neighbours = 0;
 
-					if (y > 0) {
-						if (x > 0){
-							if (off[pos - w - 1]) count++;
-							neighbours++;
-						}
-						if (off[pos - w]) count++;
-						neighbours++;
-						if (x < (w - 1)){
-							if (off[pos - w + 1]) count++;
-							neighbours++;
-						}
+					// Update cur[pos] based on current count and neighbours
+					cur[pos] = 2 * count >= neighbours;
+					if (cur[pos] != off[pos]) {
+						fillDiff += cur[pos] ? +1 : -1;
 					}
 
-					if (x > 0){
-						if (off[pos - 1]) count++;
-						neighbours++;
-					}
-					if (off[pos]) count++;
-					neighbours++;
-					if (x < (w-1)){
-						if (off[pos + 1]) count++;
-						neighbours++;
-					}
-
-					if (y < (h-1)) {
-						if (x > 0){
-							if (off[pos + w - 1]) count++;
-							neighbours++;
+					// Update count and neighbours for the next cell
+					if (x < w - 1) {
+						// Remove leftmost column
+						if (y > 0) {
+							if (off[pos - w]) count--;
+							neighbours--;
 						}
-						if (off[pos + w]) count++;
-						neighbours++;
-						if (x < (w-1)){
-							if (off[pos + w + 1]) count++;
+						if (off[pos]) count--;
+						neighbours--;
+						if (y < h - 1) {
+							if (off[pos + w]) count--;
+							neighbours--;
+						}
+
+						// Add rightmost column (which is two steps to the right from current x)
+						int rightPos = pos + 2;
+						if (x < w - 2) {  // Ensure we're not going out of bounds
+							if (y > 0) {
+								if (off[rightPos - w]) count++;
+								neighbours++;
+							}
+							if (off[rightPos]) count++;
 							neighbours++;
+							if (y < h - 1) {
+								if (off[rightPos + w]) count++;
+								neighbours++;
+							}
 						}
 					}
-
-					cur[pos] = 2*count >= neighbours;
-					if (cur[pos] != off[pos]) fillDiff += cur[pos] ? +1 : -1;
-
 				}
 			}
-			
+
 			boolean[] tmp = cur;
 			cur = off;
 			off = tmp;

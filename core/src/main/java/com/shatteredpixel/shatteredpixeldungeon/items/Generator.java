@@ -711,8 +711,8 @@ public class Generator {
 						itemCls = ExoticScroll.regToExo.get(itemCls);
 					}
 				}
-
-				return ((Item) Reflection.newInstance(itemCls)).random();
+				Item newInstance = ((Item) Reflection.newInstance(itemCls));
+				return newInstance.random();
 		}
 	}
 

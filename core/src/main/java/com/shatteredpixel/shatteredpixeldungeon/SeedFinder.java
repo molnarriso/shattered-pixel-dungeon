@@ -119,8 +119,9 @@ public class SeedFinder {
 	ArrayList<String> itemList;
 	private long startTime;
 	private long seedsTested;
+	private long fullSeedsTested= 0;
 	private long lastPrintTime;
-
+	private long fastSeedsTested = 0;
 	private void parseArgs(String[] args) {
 		if (args.length == 2) {
 			Options.ouputFile = "stdout";
@@ -381,7 +382,15 @@ public class SeedFinder {
 		} else {
 			for (long i = Random.Long(DungeonSeed.TOTAL_SEEDS); i < DungeonSeed.TOTAL_SEEDS; i++) {
 				if (testSeed(Long.toString(i), Options.floors)) {
+					System.out.println("------");
+					System.out.println("------");
+					System.out.println("------");
+					System.out.println("------");
 					System.out.printf("Found valid seed %s (%d)\n", DungeonSeed.convertToCode(Dungeon.seed), Dungeon.seed);
+					System.out.println("------");
+					System.out.println("------");
+					System.out.println("------");
+					System.out.println("------");
 					logSeedItems(Long.toString(i), Options.floors);
 				}
 			}
@@ -514,10 +523,62 @@ public class SeedFinder {
 		GamesInProgress.selectedClass = HeroClass.WARRIOR;
 		Dungeon.init();
 
+		boolean enablePreFind = true;
+
+		if(enablePreFind)
+		{
+			fastSeedsTested++;
+			int rowsFound = 0;
+			int roundsToTest = 8;
+			int[] rings = new int[roundsToTest];
+			for(int round = 0;round < roundsToTest;round++)
+			{
+				Generator.Category cat = Generator.Category.RING;
+				Random.pushGenerator(cat.seed);
+				for (int i = 0; i < cat.dropped; i++) Random.Long();
+				int i = Random.chances(cat.probs);
+				if (i == -1) {
+					System.out.println("SHOULD RESET!!!");
+					i = Random.chances(cat.probs);
+				}
+				if (cat.defaultProbs != null) cat.probs[i]--;
+				Class<?> itemCls = cat.classes[i];
+				if(i==11)//row
+				{
+					rowsFound++;
+				}
+				rings[round] = i;
+				if (cat.defaultProbs != null && cat.seed != null){
+					Random.popGenerator();
+					cat.dropped++;
+				}
+			}
+			if(rings[0] != 11 ||  rings[1] != 11 || rowsFound < 3)
+			{
+				return false;
+			}
+			for(int round = 0;round < roundsToTest;round++) {
+				System.out.print(rings[round]+" ");
+			}
+			System.out.println();
+			Dungeon.init();
+		}
+
+
+
 		boolean[] itemsFound = new boolean[itemList.size()];
-
-		for (int i = 0; i < floors; i++) {
-
+		int numItemsFound = 0;
+		int i = 0;
+		boolean impSpawned = false;
+		for (i = 0; i < floors; i++) {
+			if(i==2 && numItemsFound < 1)
+			{
+				break;
+			}
+			if(i==5 && numItemsFound < 2)
+			{
+				break;
+			}
 			Level l = Dungeon.newLevel();
 
 			// skip boss floors
@@ -539,6 +600,7 @@ public class SeedFinder {
 							if (rooms.get(k).contains(itemList.get(j))) {
 								if (!itemsFound[j]) {
 									itemsFound[j] = true;
+									numItemsFound++;
 									break;
 								}
 							}
@@ -555,6 +617,7 @@ public class SeedFinder {
 						if (trinkets.get(k).name().toLowerCase().contains(itemList.get(j))) {
 							if (!itemsFound[j]) {
 								itemsFound[j] = true;
+								numItemsFound++;
 								break;
 							}
 						}
@@ -572,6 +635,7 @@ public class SeedFinder {
 								|| item.anonymousName().toLowerCase().contains(itemList.get(j))) {
 							if (itemsFound[j] == false) {
 								itemsFound[j] = true;
+								numItemsFound++;
 								break;
 							}
 						}
@@ -585,6 +649,7 @@ public class SeedFinder {
 					if (l.sacrificialFireItem.title().toLowerCase().contains(itemList.get(j))) {
 						if (!itemsFound[j]) {
 							itemsFound[j] = true;
+							numItemsFound++;
 							break;
 						}
 					}
@@ -599,10 +664,10 @@ public class SeedFinder {
 					Wandmaker.Quest.wand2,
 					Imp.Quest.reward
 			};
-			boolean ok = false;
+			boolean imp = false;
 			if(Imp.Quest.spawned)
 			{
-				ok = true;
+				System.out.println(Imp.Quest.reward.identify().title().toLowerCase());
 			}
 
 			if (Ghost.Quest.armor != null) {
@@ -616,6 +681,7 @@ public class SeedFinder {
 						if (questitems[k].identify().title().toLowerCase().contains(itemList.get(j))) {
 							if (!itemsFound[j]) {
 								itemsFound[j] = true;
+								numItemsFound++;
 								break;
 							}
 						}
@@ -624,21 +690,31 @@ public class SeedFinder {
 			}
 
 			Dungeon.depth++;
+			if(Imp.Quest.spawned)
+			{
+				impSpawned = true;
+				break;
+			}
 		}
-
+		if(impSpawned)
+		{
+			fullSeedsTested++;
+		}
 		seedsTested++;
 		// Print stats every 5 seconds
 		long currentTime = System.currentTimeMillis();
 		if (currentTime - lastPrintTime >= 5000) {
 			double seedsPerSecond = seedsTested / ((currentTime - lastPrintTime) / 1000.0);
-			System.out.printf("Tested %d seeds (%.2f seeds/second)\r\n", seedsTested, seedsPerSecond);
+			System.out.printf("Tested %d (%d)(%d) seeds (%.2f seeds/second)\r\n", seedsTested,fullSeedsTested,fastSeedsTested, seedsPerSecond);
 			lastPrintTime = currentTime;
 			seedsTested = 0;  // Reset the counter
+			fullSeedsTested = 0;
+			fastSeedsTested = 0;
 		}
 
 		if (Options.condition == Condition.ANY) {
-			for (int i = 0; i < itemList.size(); i++) {
-				if (itemsFound[i] == true)
+			for (int f = 0; f < itemList.size(); f++) {
+				if (itemsFound[f] == true)
 					return true;
 			}
 
@@ -646,8 +722,8 @@ public class SeedFinder {
 		}
 
 		else {	//Options.condition == Condition.ALL
-			for (int i = 0; i < itemList.size(); i++) {
-				if (itemsFound[i] == false)
+			for (int f = 0; f < itemList.size(); f++) {
+				if (itemsFound[f] == false)
 					return false;
 			}
 
@@ -713,6 +789,25 @@ public class SeedFinder {
 		for (int i = 0; i < floors; i++) {
 
 			Level l = Dungeon.newLevel();
+
+			System.out.println(i);
+			for(int h = 0;h < l.height();h++)
+			{
+				for(int w = 0;w < l.width();w++)
+				{
+					int ind = h*l.width()+w;
+					if(l.passable[ind])
+					{
+						System.out.print(".");
+					}else
+					{
+						System.out.print("#");
+					}
+				}
+				System.out.println();
+			}
+			System.out.println();
+			System.out.println();
 			ArrayList<Heap> heaps = new ArrayList<>(l.heaps.valueList());
 			StringBuilder builder = new StringBuilder();
 			ArrayList<HeapItem> scrolls = new ArrayList<>();
@@ -869,7 +964,12 @@ public class SeedFinder {
 					else if (item instanceof MeleeWeapon || item instanceof Armor)
 						equipment.add(new HeapItem(item, h));
 					else if (item instanceof Ring)
+					{
 						rings.add(new HeapItem(item, h));
+						int x = h.pos % l.width();
+						int y = h.pos / l.width();
+						System.out.printf("Heap ring @ %d : %d, lvl = %d\r\n",x,y,i);
+					}
 					else if (item instanceof Wand)
 						wands.add(new HeapItem(item, h));
 					else if (item instanceof Artifact) {
