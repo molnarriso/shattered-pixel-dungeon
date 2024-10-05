@@ -136,7 +136,7 @@ public class SpectralNecromancer extends Necromancer {
 
 				Char blocker = Actor.findChar(summoningPos);
 				if (blocker.alignment != alignment){
-					blocker.damage( Char.combatRoll(2, 10), new SummoningBlockDamage() );
+					blocker.damage( Random.NormalIntRange(2, 10), new SummoningBlockDamage() );
 					if (blocker == Dungeon.hero && !blocker.isAlive()){
 						Badges.validateDeathFromEnemyMagic();
 						Dungeon.fail(this);
@@ -152,7 +152,11 @@ public class SpectralNecromancer extends Necromancer {
 		summoning = firstSummon = false;
 
 		Wraith wraith = Wraith.spawnAt(summoningPos, Wraith.class);
-		wraith.adjustStats(0);
+		if (wraith == null){
+			spend(TICK);
+			return;
+		}
+		wraith.adjustStats(4);
 		Dungeon.level.occupyCell( wraith );
 		((SpectralNecromancerSprite)sprite).finishSummoning();
 
