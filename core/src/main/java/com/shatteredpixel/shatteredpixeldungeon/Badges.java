@@ -1042,7 +1042,7 @@ public class Badges {
 			
 			unlock(badge);
 			
-			GLog.h( Messages.get(Badges.class, "new", badge.title() + " (" + badge.desc() + ")") );
+			// GLog.h( Messages.get(Badges.class, "new", badge.title() + " (" + badge.desc() + ")") );
 			GLog.newLine();
 			PixelScene.showBadge( badge );
 		}

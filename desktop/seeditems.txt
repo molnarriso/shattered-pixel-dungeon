@@ -1,2 +1,3 @@
 ring of wealth +4
-ring of wealth +2
+ring of wealth
+ring of wealth

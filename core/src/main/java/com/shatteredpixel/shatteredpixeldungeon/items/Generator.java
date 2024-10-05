@@ -670,7 +670,7 @@ public class Generator {
 	public static Item randomUsingDefaults(){
 		return randomUsingDefaults(Random.chances( defaultCatProbs ));
 	}
-	
+	public static int NumRingsGenerated = 0;
 	public static Item random( Category cat ) {
 		switch (cat) {
 			case ARMOR:
@@ -693,6 +693,10 @@ public class Generator {
 				if (i == -1) {
 					reset(cat);
 					i = Random.chances(cat.probs);
+				}
+				if(cat == Category.RING)
+				{
+					NumRingsGenerated++;
 				}
 				if (cat.defaultProbs != null) cat.probs[i]--;
 				Class<?> itemCls = cat.classes[i];

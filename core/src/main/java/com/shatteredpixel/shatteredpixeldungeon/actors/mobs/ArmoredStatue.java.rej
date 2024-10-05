@@ -1,0 +1,10 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/actors/mobs/ArmoredStatue.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/actors/mobs/ArmoredStatue.java	(rejected hunks)
+@@ -41,7 +41,7 @@ public class ArmoredStatue extends Statue {
+ 		spriteClass = StatueSprite.class;
+ 	}
+ 
+-	protected Armor armor;
++	public Armor armor;
+ 
+ 	public ArmoredStatue(){
+ 		super();

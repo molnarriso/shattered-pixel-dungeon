@@ -1,0 +1,9 @@
+diff a/SPD-classes/src/main/java/com/watabou/noosa/Game.java b/SPD-classes/src/main/java/com/watabou/noosa/Game.java	(rejected hunks)
+@@ -63,6 +63,7 @@ public class Game implements ApplicationListener {
+ 	public static float density = 1;
+ 	
+ 	public static String version;
++	public static String appname;
+ 	public static int versionCode;
+ 	
+ 	// Current scene

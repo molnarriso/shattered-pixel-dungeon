@@ -1,0 +1,12 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/items/Item.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/items/Item.java	(rejected hunks)
+@@ -487,6 +487,10 @@ public class Item implements Bundlable {
+ 	public String name() {
+ 		return trueName();
+ 	}
++
++	public String anonymousName() {
++		return "ITEM_NAME_ANONYMOUS";
++	}
+ 	
+ 	public final String trueName() {
+ 		return Messages.get(this, "name");

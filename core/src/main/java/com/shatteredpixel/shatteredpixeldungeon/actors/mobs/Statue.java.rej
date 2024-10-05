@@ -1,0 +1,10 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/actors/mobs/Statue.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/actors/mobs/Statue.java	(rejected hunks)
+@@ -48,7 +48,7 @@ public class Statue extends Mob {
+ 		properties.add(Property.INORGANIC);
+ 	}
+ 	
+-	protected Weapon weapon;
++	public Weapon weapon;
+ 
+ 	public boolean levelGenStatue = true;
+ 	

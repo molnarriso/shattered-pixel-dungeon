@@ -1,0 +1,10 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/actors/mobs/npcs/Wandmaker.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/actors/mobs/npcs/Wandmaker.java	(rejected hunks)
+@@ -213,7 +213,7 @@ public class Wandmaker extends NPC {
+ 	
+ 	public static class Quest {
+ 
+-		private static int type;
++		public static int type;
+ 		// 1 = corpse dust quest
+ 		// 2 = elemental embers quest
+ 		// 3 = rotberry quest

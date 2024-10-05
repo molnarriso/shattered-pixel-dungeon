@@ -1,0 +1,10 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/Badges.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/Badges.java	(rejected hunks)
+@@ -1120,7 +1120,7 @@ public class Badges {
+ 			
+ 			unlock(badge);
+ 			
+-			GLog.h( Messages.get(Badges.class, "new", badge.title() + " (" + badge.desc() + ")") );
++			// GLog.h( Messages.get(Badges.class, "new", badge.title() + " (" + badge.desc() + ")") );
+ 			GLog.newLine();
+ 			PixelScene.showBadge( badge );
+ 		}

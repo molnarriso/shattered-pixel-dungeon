@@ -1,0 +1,13 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/items/rings/Ring.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/items/rings/Ring.java	(rejected hunks)
+@@ -174,6 +174,11 @@ public class Ring extends KindofMisc {
+ 	public String desc() {
+ 		return isKnown() ? super.desc() : Messages.get(this, "unknown_desc");
+ 	}
++
++	@Override
++	public String anonymousName() {
++		return Messages.get(this, gem);
++	}
+ 	
+ 	@Override
+ 	public String info(){

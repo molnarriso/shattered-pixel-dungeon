@@ -1,0 +1,18 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/RegularLevel.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/RegularLevel.java	(rejected hunks)
+@@ -95,6 +95,8 @@ public abstract class RegularLevel extends Level {
+ 	
+ 	protected Room roomEntrance;
+ 	protected Room roomExit;
++
++	public static ArrayList<Room> roomList;
+ 	
+ 	@Override
+ 	protected boolean build() {
+@@ -102,6 +104,7 @@ public abstract class RegularLevel extends Level {
+ 		builder = builder();
+ 		
+ 		ArrayList<Room> initRooms = initRooms();
++		roomList = initRooms;
+ 		Random.shuffle(initRooms);
+ 		
+ 		do {

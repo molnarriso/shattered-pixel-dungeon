@@ -1,0 +1,13 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/items/potions/Potion.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/items/potions/Potion.java	(rejected hunks)
+@@ -376,6 +376,11 @@ public class Potion extends Item {
+ 		return isKnown() ? super.name() : Messages.get(this, color);
+ 	}
+ 
++	@Override
++	public String anonymousName() {
++		return Messages.get(this, color);
++	}
++
+ 	@Override
+ 	public String info() {
+ 		//skip custom notes if anonymized and un-Ided

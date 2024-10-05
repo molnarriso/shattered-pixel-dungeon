@@ -1,10 +1,10 @@
 diff a/build.gradle b/build.gradle	(rejected hunks)
-@@ -14,7 +14,7 @@ allprojects {
+@@ -18,7 +18,7 @@ allprojects {
  
      ext {
          appName = 'Shattered Pixel Dungeon'
 -        appPackageName = 'com.shatteredpixel.shatteredpixeldungeon'
 +        appPackageName = 'com.elektrochecker.seedfinder'
  
-         appVersionCode = 780
-         appVersionName = '2.4.0'
+         appVersionCode = 794
+         appVersionName = '2.5.0'

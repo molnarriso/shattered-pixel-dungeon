@@ -1,0 +1,28 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/SPDSettings.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/SPDSettings.java	(rejected hunks)
+@@ -237,7 +237,7 @@ public class SPDSettings extends GameSettings {
+ 	}
+ 	
+ 	public static boolean intro() {
+-		return getBoolean( KEY_INTRO, true );
++		return false;
+ 	}
+ 	
+ 	public static void lastClass( int value ) {
+@@ -323,7 +323,7 @@ public class SPDSettings extends GameSettings {
+ 	}
+ 
+ 	public static boolean news(){
+-		return getBoolean(KEY_NEWS, true);
++		return getBoolean(KEY_NEWS, false);
+ 	}
+ 
+ 	public static void updates(boolean value){
+@@ -331,7 +331,7 @@ public class SPDSettings extends GameSettings {
+ 	}
+ 
+ 	public static boolean updates(){
+-		return getBoolean(KEY_UPDATES, true);
++		return getBoolean(KEY_UPDATES, false);
+ 	}
+ 
+ 	public static void betas(boolean value){

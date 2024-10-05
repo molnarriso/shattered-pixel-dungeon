@@ -1,0 +1,9 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/rooms/special/SacrificeRoom.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/rooms/special/SacrificeRoom.java	(rejected hunks)
+@@ -99,6 +99,7 @@ public class SacrificeRoom extends SpecialRoom {
+ 			}
+ 		}
+ 		prize.cursed = prize.cursedKnown = true;
++		level.sacrificialFireItem = prize;
+ 
+ 		return prize;
+ 	}

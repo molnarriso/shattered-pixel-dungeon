@@ -1,0 +1,10 @@
+diff a/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/Level.java b/core/src/main/java/com/shatteredpixel/shatteredpixeldungeon/levels/Level.java	(rejected hunks)
+@@ -205,6 +205,8 @@ public abstract class Level implements Bundlable {
+ 	private static final String BLOBS		= "blobs";
+ 	private static final String FEELING		= "feeling";
+ 
++	public Item sacrificialFireItem = null;
++
+ 	public void create() {
+ 
+ 		Random.pushGenerator( Dungeon.seedCurDepth() );
