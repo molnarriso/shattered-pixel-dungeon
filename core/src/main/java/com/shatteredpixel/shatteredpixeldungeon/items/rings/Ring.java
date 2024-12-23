@@ -174,6 +174,11 @@ public class Ring extends KindofMisc {
 	public String desc() {
 		return isKnown() ? super.desc() : Messages.get(this, "unknown_desc");
 	}
+
+	@Override
+	public String anonymousName() {
+		return Messages.get(this, gem);
+	}
 	
 	@Override
 	public String info(){

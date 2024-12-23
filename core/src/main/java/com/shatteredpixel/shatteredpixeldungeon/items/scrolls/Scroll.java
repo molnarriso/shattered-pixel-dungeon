@@ -240,6 +240,11 @@ public abstract class Scroll extends Item {
 	}
 
 	@Override
+	public String anonymousName() {
+		return Messages.get(this, rune);
+	}
+
+	@Override
 	public String info() {
 		//skip custom notes if anonymized and un-Ided
 		return (anonymous && (handler == null || !handler.isKnown( this ))) ? desc() : super.info();
