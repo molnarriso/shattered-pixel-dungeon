@@ -327,9 +327,9 @@ public class SeedFinder {
 	}
 
 	public SeedFinder(String[] args) {
-		System.out.println("\n==============================================================");
-		System.out.println("Elektrocheckers seed finder for " + Game.appname + " v" + Game.version);
-		System.out.println("==============================================================\n");
+		//System.out.println("\n==============================================================");
+		//System.out.println("Elektrocheckers seed finder for " + Game.appname + " v" + Game.version);
+		//System.out.println("==============================================================\n");
 
 		parseConfig("seedfinder.cfg");
 		parseArgs(args);
