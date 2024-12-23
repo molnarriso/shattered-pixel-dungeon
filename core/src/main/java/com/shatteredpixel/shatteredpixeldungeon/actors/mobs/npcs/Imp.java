@@ -157,7 +157,7 @@ public class Imp extends NPC {
 		
 		private static boolean alternative;
 		
-		private static boolean spawned;
+		public static boolean spawned;
 		private static boolean given;
 		private static boolean completed;
 		
