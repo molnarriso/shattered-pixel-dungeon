@@ -86,7 +86,7 @@ public class Potion extends Item {
 
 	private static final float TIME_TO_DRINK = 1f;
 
-	private static final LinkedHashMap<String, Integer> colors = new LinkedHashMap<String, Integer>() {
+	public static final LinkedHashMap<String, Integer> colors = new LinkedHashMap<String, Integer>() {
 		{
 			put("crimson",ItemSpriteSheet.POTION_CRIMSON);
 			put("amber",ItemSpriteSheet.POTION_AMBER);
@@ -131,7 +131,7 @@ public class Potion extends Item {
 		canThrowPots.add(ElixirOfHoneyedHealing.class);
 	}
 	
-	protected static ItemStatusHandler<Potion> handler;
+	public static ItemStatusHandler<Potion> handler;
 	
 	protected String color;
 

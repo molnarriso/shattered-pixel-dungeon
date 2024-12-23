@@ -69,7 +69,7 @@ public abstract class Scroll extends Item {
 	
 	protected static final float TIME_TO_READ	= 1f;
 
-	private static final LinkedHashMap<String, Integer> runes = new LinkedHashMap<String, Integer>() {
+	public static final LinkedHashMap<String, Integer> runes = new LinkedHashMap<String, Integer>() {
 		{
 			put("KAUNAN",ItemSpriteSheet.SCROLL_KAUNAN);
 			put("SOWILO",ItemSpriteSheet.SCROLL_SOWILO);
@@ -86,7 +86,7 @@ public abstract class Scroll extends Item {
 		}
 	};
 	
-	protected static ItemStatusHandler<Scroll> handler;
+	public static ItemStatusHandler<Scroll> handler;
 	
 	protected String rune;
 
