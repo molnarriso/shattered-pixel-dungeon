@@ -96,6 +96,7 @@ public class Game implements ApplicationListener {
 	@Override
 	public void create() {
 		density = Gdx.graphics.getDensity();
+		Gdx.app.setLogLevel(Application.LOG_ERROR);
 		if (density == Float.POSITIVE_INFINITY){
 			density = 100f / 160f; //assume 100PPI if density can't be found
 		}
